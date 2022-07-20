@@ -55,13 +55,13 @@ class LoginController extends Controller
             } else if (auth()->user()->peran == 3) {
                 return redirect()->route('assspv.home');
             } else if (auth()->user()->peran == 4) {
-                return redirect()->route('assspv.home');
+                return redirect()->route('abcd.home');
             } else {
                 return redirect()->route('home');
             }
         } else {
             return redirect()->route('login')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', 'Username And Password Are Wrong.');
         }
     }
 }

@@ -10,10 +10,11 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="sidenav-collapse-main">
                 <!-- Nav items -->
-                <ul class="navbar-nav">
-                    @if (Auth::user()->peran == 1)
+
+                @if (Auth::user()->peran == 1)
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="examples/dashboard.html">
+                            <a class="nav-link {{ request()->is('admin/home') ? 'active' : '' }}" href="/admin/home">
                                 <i class="ni ni-tv-2 text-primary"></i>
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
@@ -26,6 +27,20 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('master_customer') ? 'active' : '' }}"
+                                href="/master_customer">
+                                <i class="ni ni-badge text-success"></i>
+                                <span class="nav-link-text">Master Data Customer</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('master_mesin') ? 'active' : '' }}"
+                                href="/master_mesin">
+                                <i class="ni ni-planet text-orange"></i>
+                                <span class="nav-link-text">Master Data Mesin</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('kunjungan_report') ? 'active' : '' }}"
                                 href="/kunjungan_report">
                                 <i class="ni ni-pin-3 text-primary"></i>
@@ -33,26 +48,56 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="examples/profile.html">
-                                <i class="ni ni-planet text-orange"></i>
-                                <span class="nav-link-text">Mesin</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="examples/tables.html">
                                 <i class="ni ni-bullet-list-67 text-default"></i>
                                 <span class="nav-link-text">Report</span>
                             </a>
                         </li>
-                    @else
+                    </ul>
+                @elseif (Auth::user()->peran == 2)
+                    <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="examples/tables.html">
+                            <a class="nav-link {{ request()->is('teknisi/home') ? 'active' : '' }}"
+                                href="/teknisi/home">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('report') ? 'active' : '' }}" href="/report">
                                 <i class="ni ni-bullet-list-67 text-default"></i>
                                 <span class="nav-link-text">Report</span>
                             </a>
                         </li>
-                    @endif
-                </ul>
+                    </ul>
+                @elseif (Auth::user()->peran == 3)
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('assspv') ? 'active' : '' }}" href="/assspv">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('daftar_report') ? 'active' : '' }}"
+                                href="/daftar_report">
+                                <i class="ni ni-bullet-list-67 text-default"></i>
+                                <span class="nav-link-text">Daftar Report</span>
+                            </a>
+                        </li>
+                    </ul>
+                @else
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('pimpinan/home') ? 'active' : '' }}"
+                                href="admin/home">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                @endif
+
 
             </div>
         </div>

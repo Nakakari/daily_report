@@ -36,7 +36,7 @@ class MasterDataUserController extends Controller
         $data = User::select('*')
             ->join('tbl_peran', 'tbl_peran.id_peran', '=', 'users.peran')
             ->join('tbl_jk', 'tbl_jk.id_jk', '=', 'users.jk')
-            ->orderBy('id', "asc");;
+            ->orderBy('id', "desc");;
 
         $recordsFiltered = $data->get()->count(); //menghitung data yang sudah difilter
 

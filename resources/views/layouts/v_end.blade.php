@@ -15,5 +15,5 @@
 </script>
 <script type="text/javascript" charset="utf8" href="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js">
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 @yield('js')
