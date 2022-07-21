@@ -61,7 +61,7 @@ Route::group(['middleware' => 'is_admin'], function () {
     Route::post('hapus_reportAdmin', [reportAdminController::class, 'hapusReport']);
     Route::get('edit_reportAdmin/{id_report}', [reportAdminController::class, 'editReport']);
     Route::post('update_reportAdmin/{id_report}', [reportAdminController::class, 'updateReport']);
-    Route::get('report/print/{id_report}', [reportAdminController::class, 'printReport']);
+    Route::get('report_print/{id_report}', [reportAdminController::class, 'printReport']);
 });
 
 Route::group(['middleware' => 'is_teknisi'], function () {

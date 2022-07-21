@@ -193,7 +193,7 @@
                 "render": function(data, type, row, meta) {
                     return `<a class="btn btn-sm btn-success" href="/edit_reportAdmin/${row.id_report}">Edit</a>
                             <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>
-                            <a class="btn btn-sm btn-warning" href="{{ url('') }}/report/print/${row.id_report}" id="btnprn" target="_blank">Cetak</a>`;
+                            <a class="btn btn-sm btn-warning" href="{{ url('') }}/report_print/${row.id_report}" id="btnprn" target="_blank">Cetak</a>`;
                 }
                 //  <a data-bs-toggle="modal" data-bs-target="#modalDetail"><i class='lni lni-eye'></i></a>
             }, ]
