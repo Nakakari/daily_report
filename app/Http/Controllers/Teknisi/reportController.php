@@ -97,8 +97,8 @@ class reportController extends Controller
         $data->time_out = $request->get('time_out');
         $data->notes = $request->get('notes');
         $data->id_work_for = $request->get('id_work_for');
-        $data->by_aspv = $request->get('by_asvp');
-        $data->by_spv = $request->get('by_svp');
+        $data->by_aspv = $request->get('by_aspv');
+        $data->by_spv = $request->get('by_spv');
         $data->by_asmng = $request->get('by_asmng');
         $data->by_mng = $request->get('by_mng');
         $data->ttd = $nama_file;
@@ -226,6 +226,10 @@ class reportController extends Controller
             $data->time_out = $request->get('time_out');
             $data->notes = $request->get('notes');
             $data->id_work_for = $request->get('id_work_for');
+            $data->by_aspv = $request->get('by_aspv');
+            $data->by_spv = $request->get('by_spv');
+            $data->by_asmng = $request->get('by_asmng');
+            $data->by_mng = $request->get('by_mng');
             $data->ttd = $nama_file;
             // dd($file);
 
