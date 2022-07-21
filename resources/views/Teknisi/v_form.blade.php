@@ -44,7 +44,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-username">Customer</label>
                                             <select class="form-control form-select" aria-label="Default select example"
-                                                name="id_cust" id="id_cust">
+                                                name="id_cust" id="id_cust" required>
                                                 <option selected>Pilih Customer</option>
                                                 @foreach ($customer as $c)
                                                     <option value="{{ $c->id_cust }}">{{ $c->nama_cust }}</option>
@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-email">Date</label>
+                                            <label class="form-control-label" for="input-email" required>Date</label>
                                             <input type="date" id="input-email" class="form-control" name="date">
                                             <input type="hidden" id="input-email" class="form-control" name="by_aspv"
                                                 value="0">
@@ -79,7 +79,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Status</label>
                                             <select class="form-control form-select" aria-label="Default select example"
-                                                name="id_status" id="id_status">
+                                                name="id_status" id="id_status" required>
                                                 <option selected>Pilih Status</option>
                                                 @foreach ($status as $s)
                                                     <option value="{{ $s->id_status }}">{{ $s->nama_status }}</option>
@@ -93,7 +93,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-first-name">Model</label>
                                             <select class="form-control form-select" aria-label="Default select example"
-                                                name="id_mesin" id="id_mesin">
+                                                name="id_mesin" id="id_mesin" required>
                                                 <option selected>Pilih Model Mesin</option>
                                                 @foreach ($mesin as $p)
                                                     <option value="{{ $p->id_mesin }}">{{ $p->model_mesin }}</option>
@@ -105,7 +105,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Problem</label>
                                             <select class="form-control selectpicker" name="problem[]" multiple
-                                                data-live-search="true">
+                                                data-live-search="true" required>
                                                 @foreach ($problem as $pro)
                                                     <option value="{{ $pro->id_problem }}">{{ $pro->nama_problem }}
                                                     </option>
@@ -129,7 +129,7 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-first-name">Counter After</label>
                                             <input type="text" id="input-city" name="counter_after"
-                                                class="form-control">
+                                                class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                                             <label class="form-control-label" for="input-first-name">Counter
                                                 Before</label>
                                             <input type="text" id="input-city" name="counter_before"
-                                                class="form-control">
+                                                class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-address">Remarks</label>
-                                            <textarea class="form-control" placeholder="Remarks..." rows="5" name="remarks"></textarea>
+                                            <textarea class="form-control" placeholder="Remarks..." rows="5" name="remarks" required></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -167,14 +167,14 @@
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-city">Time Call</label>
                                             <input type="time" id="input-city" class="form-control"
-                                                placeholder="City" name="time_call">
+                                                placeholder="City" name="time_call" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-country">Time In</label>
                                             <input type="time" id="input-country" class="form-control"
-                                                placeholder="Country" name="time_in">
+                                                placeholder="Country" name="time_in" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -182,7 +182,7 @@
                                             <label class="form-control-label" for="input-country">Time
                                                 Out</label>
                                             <input type="time" id="input-postal-code" class="form-control"
-                                                placeholder="Postal code" name="time_out">
+                                                placeholder="Postal code" name="time_out" required>
                                         </div>
                                     </div>
                                 </div>
@@ -195,14 +195,14 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label class="form-control-label">Notes</label>
-                                            <textarea rows="4" class="form-control" placeholder="Notes ..." name="notes"></textarea>
+                                            <textarea rows="4" class="form-control" placeholder="Notes ..." name="notes" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="form-control-label">Tanda Tangan</label>
                                             <input type="file" id="input-postal-code" class="form-control"
-                                                placeholder="Postal code" name="ttd">
+                                                placeholder="Postal code" name="ttd" required>
                                         </div>
                                     </div>
                                 </div>
