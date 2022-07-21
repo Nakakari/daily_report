@@ -71,9 +71,7 @@
                         <div class="col">
                             <h3 class="mb-0">Daftar Technical Report</h3>
                         </div>
-                        <div class="col text-right">
-                            <a href="/new_report" class="btn btn-sm btn-primary">New Technical Report</a>
-                        </div>
+
                     </div>
                     <!-- Light table -->
                     <div class="table-responsive">
@@ -82,7 +80,7 @@
                                 <tr>
                                     <th scope="col" class="sort" data-sort="name">No</th>
                                     <th scope="col" class="sort" data-sort="status">Tanggal</th>
-                                    <th scope="col">Tanda Tangan</th>
+                                    <th scope="col">Tertanda Tangan</th>
                                     <th scope="col">Status</th>
                                     <th scope="col" class="sort" data-sort="completion">Action</th>
                                 </tr>
@@ -112,7 +110,7 @@
                     Apakah Anda yakin hapus data?
                 </div>
                 <div class="modal-footer">
-                    <form method="POST" action="/hapus_report" enctype="multipart/form-data" id="formHapus">
+                    <form method="POST" action="/hapus_reportAdmin" enctype="multipart/form-data" id="formHapus">
                         @csrf
                         <input type="hidden" id="id_report" class="form-control" name="id_report">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -142,7 +140,7 @@
                 [1, "asc"]
             ],
             "ajax": {
-                url: "{{ url('list_report') }}",
+                url: "{{ url('list_reportAdmin') }}",
                 type: "POST",
                 data: function(d) {
                     d._token = "{{ csrf_token() }}"
@@ -193,33 +191,9 @@
                 "sortable": false,
                 "data": "by_aspv",
                 "render": function(data, type, row, meta) {
-                    var tampilan = ``;
-                    if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 1) {
-                        tampilan +=
-                            `<a class="btn btn-sm btn-warning" href="{{ url('') }}/report/print/${row.id_report}" id="btnprn" target="_blank">Cetak</a>`
-                    } else if (data == 1 || row.by_spv == 1 || row.by_asmng == 1 || row.by_mng == 1) {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
-                                    
-                                    <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
-                    } else if (data == 2 || row.by_spv == 2 || row.by_asmng == 2 || row.by_mng == 2) {
-                        tampilan +=
-                            `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
-                                    <a class="btn btn-sm btn-success" href="/edit_report/${row.id_report}">Edit</a>
-                                    <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
-                    } else if (data == 3 || row.by_spv == 3 || row.by_asmng == 3 || row.by_mng == 3) {
-                        tampilan +=
-                            ` <a class="btn btn-sm btn-info" href="/detail_reportt/${row.id_report}">Detail</a>
-                            <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
-                    } else if (data == 0) {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
-                            <a class="btn btn-sm btn-success" href="/edit_report/${row.id_report}">Edit</a>
-                            <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
-                    } else {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
-                            <a class="btn btn-sm btn-success" href="/edit_report/${row.id_report}">Edit</a>
-                            <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
-                    }
-                    return tampilan;
+                    return `<a class="btn btn-sm btn-success" href="/edit_reportAdmin/${row.id_report}">Edit</a>
+                            <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>
+                            <a class="btn btn-sm btn-warning" href="{{ url('') }}/report/print/${row.id_report}" id="btnprn" target="_blank">Cetak</a>`;
                 }
                 //  <a data-bs-toggle="modal" data-bs-target="#modalDetail"><i class='lni lni-eye'></i></a>
             }, ]
@@ -241,5 +215,9 @@
             const report = list_report[id_report]
             $("#formHapus [name='id_report']").val(report.id_report)
         }
+
+        $(document).ready(function() {
+            $('#btnprn').printPage();
+        });
     </script>
 @stop

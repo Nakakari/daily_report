@@ -60,6 +60,14 @@
                                             <label class="form-control-label" for="input-email">Date</label>
                                             <input type="date" id="input-email" class="form-control" name="date"
                                                 value="{{ $report->date }}">
+                                            <input type="hidden" id="input-email" class="form-control" name="by_aspv"
+                                                value="0">
+                                            <input type="hidden" id="input-email" class="form-control" name="by_spv"
+                                                value="0">
+                                            <input type="hidden" id="input-email" class="form-control" name="by_asmng"
+                                                value="0">
+                                            <input type="hidden" id="input-email" class="form-control" name="by_mng"
+                                                value="0">
                                         </div>
                                     </div>
                                 </div>
@@ -104,10 +112,11 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-last-name">Problem</label>
-                                            <select class="form-control selectpicker" id="problemedit" name="problemEdit[]"
-                                                multiple data-live-search="true">
+                                            <select class="form-control selectpicker" id="problemedit"
+                                                name="problemEdit[]" multiple data-live-search="true">
                                                 @foreach ($problem as $pro)
                                                     <?php
+                                                    $selected = false;
                                                     foreach ($problem2 as $pro2) {
                                                         if ($pro->id_problem == $pro2->id_problem) {
                                                             $selected = true;
@@ -130,8 +139,9 @@
                                             <input type="text" name="serial_number" id="serial_number"
                                                 class="form-control" placeholder="Serial Number" readonly
                                                 value="{{ $report->serial_number }}">
-                                            <input type="hidden" id="id_work_for" name="id_work_for" class="form-control"
-                                                placeholder="Serial Number" value="{{ Auth::user()->id }}">
+                                            <input type="hidden" id="id_work_for" name="id_work_for"
+                                                class="form-control" placeholder="Serial Number"
+                                                value="{{ Auth::user()->id }}">
                                             <input type="hidden" id="id_work_for" name="id_report" class="form-control"
                                                 placeholder="Serial Number" value="{{ $id_report }}">
                                         </div>

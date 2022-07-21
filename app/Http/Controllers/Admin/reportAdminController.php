@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Teknisi;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,19 +11,9 @@ use App\Models\M_report;
 use App\Models\M_trxProblem;
 use Illuminate\Support\Facades\DB;
 
-class reportController extends Controller
+class reportAdminController extends Controller
 {
     public function index(Request $request)
-    {
-        $data = [
-            'peran' => M_peran::getAll(),
-        ];
-        // $peran = M_peran::getAll();
-        return view('Teknisi.v_report', $data);
-        // dd($data['peran']);
-    }
-
-    public function addReport()
     {
         $data = [
             'peran' => M_peran::getAll(),
@@ -31,91 +21,11 @@ class reportController extends Controller
             'mesin' => M_mesin::getAll(),
             'problem' => M_cust::getProblem(),
             'status' => M_cust::getStatus(),
+            'report' => M_report::getall(),
         ];
-        return view('Teknisi.v_form', $data);
-    }
-
-    public function kodeCustomer(Request $request)
-    {
-        $data = M_cust::where('id_cust', $request->get('id_cust'))
-            ->pluck('alamat_cust', 'id_cust');
-        return response()->json($data);
-    }
-
-    public function kodeMesin(Request $request)
-    {
-        $data = M_mesin::where('id_mesin', $request->get('id_mesin'))
-            ->pluck('model_mesin', 'serial_number', 'id_mesin');
-        return response()->json($data);
-    }
-
-    public function kodeOption(Request $request)
-    {
-        $data = M_cust::where('id_cust', $request->get('id_cust'))
-            ->pluck('option_cust', 'id_cust');
-        return response()->json($data);
-    }
-
-    public function uploadReport(Request $request)
-    {
-        // dd(request()->all());
-        $this->validate($request, [
-            'id_cust' => 'required',
-            'id_mesin'  => 'required',
-            'counter_before'  => 'required',
-            'counter_after'  => 'required',
-            'date'  => 'required',
-            'id_status'  => 'required',
-            'remarks'  => 'required',
-            'time_call'  => 'required',
-            'time_in'  => 'required',
-            'time_out'  => 'required',
-            'notes'  => 'required',
-            // 'id_work_for'  => 'required',
-            'ttd' => 'required|file|image|mimes:jpeg,png,jpg',
-            // 'problem'  => 'required'
-        ]);
-
-        $file = $request->file('ttd');
-
-        $nama_file = time() . "_" . $file->getClientOriginalName();
-
-        // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'dok_ttd';
-        $file->move($tujuan_upload, $nama_file);
-
-        $data = new M_report();
-        $data->id_cust = $request->get('id_cust');
-        $data->id_mesin = $request->get('id_mesin');
-        $data->counter_before = $request->get('counter_before');
-        $data->counter_after = $request->get('counter_after');
-        $data->date = $request->get('date');
-        $data->id_status = $request->get('id_status');
-        $data->remarks = $request->get('remarks');
-        $data->time_call = $request->get('time_call');
-        $data->time_in = $request->get('time_in');
-        $data->time_out = $request->get('time_out');
-        $data->notes = $request->get('notes');
-        $data->id_work_for = $request->get('id_work_for');
-        $data->by_aspv = $request->get('by_asvp');
-        $data->by_spv = $request->get('by_svp');
-        $data->by_asmng = $request->get('by_asmng');
-        $data->by_mng = $request->get('by_mng');
-        $data->ttd = $nama_file;
-        // dd($file);
-
-        $data->save();
-        $id = $data->id_report;
-
-        if (is_array($request->get('problem')) || is_object($request->get('problem'))) {
-            foreach ($request->get('problem') as $problem) {
-                M_trxProblem::create([
-                    'id_report' => $id,
-                    'id_problem' => $problem
-                ]);
-            }
-        }
-        return redirect('/report')->with('pesan', 'Data Berhasil Ditambah!');
+        // $peran = M_peran::getAll();
+        return view('Admin.v_report', $data);
+        // dd($data['peran']);
     }
 
     public function listReport()
@@ -123,11 +33,11 @@ class reportController extends Controller
         $columns = [
             'id_report',
             'tbl_report.id_cust',
-            'tbl_report.id_mesin',
+            'id_mesin',
             'counter_before',
             'counter_after',
             'date',
-            'tbl_report.id_status',
+            'id_status',
             'remarks',
             'time_call',
             'time_in',
@@ -247,23 +157,6 @@ class reportController extends Controller
             DB::table('trx_problem')->insert($result);
         });
         return redirect('/report')->with('pesan', 'Data Berhasil Dihapus!');
-    }
-
-    public function detail(Request $request, $id_report)
-    {
-        $data = [
-            'peran' => M_peran::getAll(),
-            'customer' => M_cust::getAll(),
-            'mesin' => M_mesin::getAll(),
-            'problem' => M_cust::getProblem(),
-            'status' => M_cust::getStatus(),
-            'r' => M_report::getDetail($id_report),
-            'problem2' => M_report::ambilproblem($id_report),
-            'id_report' => $id_report,
-            'link' => '/report'
-        ];
-        return view('Teknisi.v_detail', $data);
-        // dd($data['problem2']);
     }
 
     public function printReport(Request $request, $id_report)

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\assSpv;
+namespace App\Http\Controllers\asMng;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use App\Models\M_report;
 use App\Models\M_trxProblem;
 use Illuminate\Support\Facades\DB;
 
-class assSpvController extends Controller
+class asMngController extends Controller
 {
     public function index(Request $request)
     {
@@ -24,11 +24,11 @@ class assSpvController extends Controller
             'report' => M_report::getall(),
         ];
         // $peran = M_peran::getAll();
-        return view('assSpv.v_assSpv', $data);
+        return view('asMng.v_asMng', $data);
         // dd($data['peran']);
     }
 
-    public function listReportAspv()
+    public function listReport()
     {
         $columns = [
             'id_report',
@@ -51,8 +51,8 @@ class assSpvController extends Controller
             ->join('tbl_mesin', 'tbl_mesin.id_mesin', '=', 'tbl_report.id_mesin')
             ->join('tbl_status', 'tbl_status.id_status', '=', 'tbl_report.id_status')
             ->join('users', 'users.id', '=', 'tbl_report.id_work_for')
-            ->where('tbl_report.by_spv', 0)
-            ->where('tbl_report.by_asmng', 0)
+            ->where('tbl_report.by_spv', 1)
+            ->where('tbl_report.by_aspv', 1)
             ->where('tbl_report.by_mng', 0)
             ->orderBy('id_report', "desc");
 
@@ -83,36 +83,6 @@ class assSpvController extends Controller
         ]);
     }
 
-    public function approveByAspv(Request $request)
-    {
-        $report = M_report::find($request->input('id_report'));
-        $report->by_aspv = $request->by_aspv;
-        $report->save();
-        return response()->json(true);
-    }
-
-    public function revisionByAspv(Request $request)
-    {
-        $report = M_report::find($request->input('id_report'));
-        $report->by_aspv = $request->by_aspv;
-        $report->save();
-        return response()->json(true);
-    }
-
-    public function rejectByAspv(Request $request)
-    {
-        $report = M_report::find($request->input('id_report'));
-        $report->by_aspv = $request->by_aspv;
-        $report->save();
-        return response()->json(true);
-    }
-
-    public function detailProblem()
-    {
-        $item =  M_report::ambilproblem(request()->input('id_report'));
-        return $item;
-    }
-
     public function detail(Request $request, $id_report)
     {
         $data = [
@@ -124,9 +94,33 @@ class assSpvController extends Controller
             'r' => M_report::getDetail($id_report),
             'problem2' => M_report::ambilproblem($id_report),
             'id_report' => $id_report,
-            'link' => '/daftar_report'
+            'link' => '/daftar_reportAsMng'
         ];
         return view('Teknisi.v_detail', $data);
         // dd($data['problem2']);
+    }
+
+    public function approveByAspv(Request $request)
+    {
+        $report = M_report::find($request->input('id_report'));
+        $report->by_asmng = $request->by_asmng;
+        $report->save();
+        return response()->json(true);
+    }
+
+    public function revisionByAspv(Request $request)
+    {
+        $report = M_report::find($request->input('id_report'));
+        $report->by_asmng = $request->by_asmng;
+        $report->save();
+        return response()->json(true);
+    }
+
+    public function rejectByAspv(Request $request)
+    {
+        $report = M_report::find($request->input('id_report'));
+        $report->by_asmng = $request->by_asmng;
+        $report->save();
+        return response()->json(true);
     }
 }

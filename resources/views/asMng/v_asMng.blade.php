@@ -280,7 +280,7 @@
                 [1, "asc"]
             ],
             "ajax": {
-                url: "{{ url('list_report_aspv') }}",
+                url: "{{ url('list_report_asmng') }}",
                 type: "POST",
                 data: function(d) {
                     d._token = "{{ csrf_token() }}"
@@ -308,11 +308,11 @@
                     return `<p><b>Customer: </b>` + row.nama_cust + `<br>` +
                         `<b>Address: </b>` + row.alamat_cust + `<br>` +
                         `<b>Model: </b>` + row.model_mesin + `<br></p>` +
-                        `<a class="btn btn-sm btn-info" href="detail_report/${row.id_report}">Detail</a>`;
+                        `<a class="btn btn-sm btn-info" href="detail_report3/${row.id_report}">Detail</a>`;
                 }
             }, {
                 "targets": 3,
-                "data": "by_aspv",
+                "data": "by_asmng",
                 "render": function(data, type, row, meta) {
                     var status = ``;
                     if (data == 1) {
@@ -329,7 +329,7 @@
             }, {
                 "targets": 4,
                 "sortable": false,
-                "data": "by_aspv",
+                "data": "by_asmng",
                 "render": function(data, type, row, meta) {
                     var tampilan = ``;
 
@@ -368,11 +368,11 @@
                 let report = list_report[id_report]
                 const by_aspv_update = 1;
                 $.ajax({
-                    url: '{{ url('') }}/by_aspv/approve',
+                    url: '{{ url('') }}/by_asmng/approve',
                     method: 'POST',
                     data: {
                         id_report: id_report,
-                        by_aspv: by_aspv_update,
+                        by_asmng: by_aspv_update,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(res) {
@@ -391,11 +391,11 @@
                 let report = list_report[id_report]
                 const by_aspv_update = 2;
                 $.ajax({
-                    url: '{{ url('') }}/by_aspv/revision',
+                    url: '{{ url('') }}/by_asmng/revision',
                     method: 'POST',
                     data: {
                         id_report: id_report,
-                        by_aspv: by_aspv_update,
+                        by_asmng: by_aspv_update,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(res) {
@@ -414,11 +414,11 @@
                 let report = list_report[id_report]
                 const by_aspv_update = 3;
                 $.ajax({
-                    url: '{{ url('') }}/by_aspv/reject',
+                    url: '{{ url('') }}/by_asmng/reject',
                     method: 'POST',
                     data: {
                         id_report: id_report,
-                        by_aspv: by_aspv_update,
+                        by_asmng: by_aspv_update,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(res) {

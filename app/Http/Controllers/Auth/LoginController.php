@@ -55,7 +55,11 @@ class LoginController extends Controller
             } else if (auth()->user()->peran == 3) {
                 return redirect()->route('assspv.home');
             } else if (auth()->user()->peran == 4) {
-                return redirect()->route('abcd.home');
+                return redirect()->route('spv.home');
+            } else if (auth()->user()->peran == 5) {
+                return redirect()->route('asmng.home');
+            } else if (auth()->user()->peran == 6) {
+                return redirect()->route('mng.home');
             } else {
                 return redirect()->route('home');
             }

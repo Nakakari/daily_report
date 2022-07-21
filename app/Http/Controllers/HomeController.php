@@ -55,4 +55,28 @@ class HomeController extends Controller
         ];
         return view('assspvHome', $data);
     }
+
+    public function spvHome()
+    {
+        $data = [
+            'peran' => M_peran::getAll(),
+        ];
+        return view('spvHome', $data);
+    }
+
+    public function asmngHome()
+    {
+        $data = [
+            'peran' => M_peran::getAll(),
+        ];
+        return view('asmngHome', $data);
+    }
+
+    public function mngHome()
+    {
+        $data = [
+            'peran' => M_peran::getAll(),
+        ];
+        return view('mngHome', $data);
+    }
 }

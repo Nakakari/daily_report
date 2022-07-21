@@ -10,7 +10,7 @@ class M_report extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_cust', 'id_mesin', 'counter_before', 'counter_after', 'date', 'id_status', 'remarks', 'time_call',
+        'id_report', 'id_cust', 'id_mesin', 'counter_before', 'counter_after', 'date', 'id_status', 'remarks', 'time_call',
         'time_in', 'time_out', 'notes', 'id_work_for', 'ttd', 'by_aspv', 'by_spv', 'by_asmng', 'by_mng'
     ];
     protected $table = 'tbl_report';
@@ -38,6 +38,19 @@ class M_report extends Model
             ->join('tbl_report', 'tbl_report.id_report', '=', 'trx_problem.id_report')
             ->join('tbl_problem', 'trx_problem.id_problem', '=', 'tbl_problem.id_problem')
             ->where('trx_problem.id_report', $id_report)
+            ->get();
+    }
+
+    public static function getall()
+    {
+        return DB::table('tbl_report')
+            ->select(
+                '*'
+            )
+            ->join('tbl_customer', 'tbl_customer.id_cust', '=', 'tbl_report.id_cust')
+            ->join('tbl_mesin', 'tbl_mesin.id_mesin', '=', 'tbl_report.id_mesin')
+            ->join('tbl_status', 'tbl_status.id_status', '=', 'tbl_report.id_status')
+            ->join('users', 'users.id', '=', 'tbl_report.id_work_for')
             ->get();
     }
 }

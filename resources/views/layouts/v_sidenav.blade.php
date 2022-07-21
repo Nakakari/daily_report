@@ -47,12 +47,7 @@
                                 <span class="nav-link-text">Kunjungan Report</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="examples/tables.html">
-                                <i class="ni ni-bullet-list-67 text-default"></i>
-                                <span class="nav-link-text">Report</span>
-                            </a>
-                        </li>
+
                     </ul>
                 @elseif (Auth::user()->peran == 2)
                     <ul class="navbar-nav">
@@ -81,6 +76,54 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('daftar_report') ? 'active' : '' }}"
                                 href="/daftar_report">
+                                <i class="ni ni-bullet-list-67 text-default"></i>
+                                <span class="nav-link-text">Daftar Report</span>
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->peran == 4)
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('spv/home') ? 'active' : '' }}" href="/spv/home">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('daftar_reportSpv') ? 'active' : '' }}"
+                                href="/daftar_reportSpv">
+                                <i class="ni ni-bullet-list-67 text-default"></i>
+                                <span class="nav-link-text">Daftar Report</span>
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->peran == 5)
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('asmng/home') ? 'active' : '' }}" href="/asmng/home">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('daftar_reportAsMng') ? 'active' : '' }}"
+                                href="/daftar_reportAsMng">
+                                <i class="ni ni-bullet-list-67 text-default"></i>
+                                <span class="nav-link-text">Daftar Report</span>
+                            </a>
+                        </li>
+                    </ul>
+                @elseif (Auth::user()->peran == 6)
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('mng/home') ? 'active' : '' }}" href="/mng/home">
+                                <i class="ni ni-tv-2 text-primary"></i>
+                                <span class="nav-link-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('daftar_reportMng') ? 'active' : '' }}"
+                                href="/daftar_reportMng">
                                 <i class="ni ni-bullet-list-67 text-default"></i>
                                 <span class="nav-link-text">Daftar Report</span>
                             </a>
