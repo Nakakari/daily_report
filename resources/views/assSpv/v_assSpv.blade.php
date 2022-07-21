@@ -322,7 +322,7 @@
                     } else if (data == 3) {
                         status += `Rejected`
                     } else {
-                        `<p>--</p>`
+                        status += `<p>--</p>`
                     }
                     return status;
                 }

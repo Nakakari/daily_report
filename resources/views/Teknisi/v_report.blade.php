@@ -184,9 +184,9 @@
                     } else if (data == 3 || row.by_spv == 3 || row.by_asmng == 3 || row.by_mng == 3) {
                         status += `Rejected`
                     } else if (data == 0) {
-                        `<p>--</p>`
+                        status += `<p>--</p>`
                     } else {
-                        `<p>--</p>`
+                        status += `<p>--</p>`
                     }
                     return status;
                 }
@@ -213,11 +213,11 @@
                             ` <a class="btn btn-sm btn-info" href="/detail_reportt/${row.id_report}">Detail</a>
                             <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
                     } else if (data == 0 || row.by_spv == 0 || row.by_asmng == 0 || row.by_mng == 0) {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
+                        tampilan += `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
                             <a class="btn btn-sm btn-success" href="/edit_report/${row.id_report}">Edit</a>
                             <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
                     } else {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
+                        tampilan += `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
                             <a class="btn btn-sm btn-success" href="/edit_report/${row.id_report}">Edit</a>
                             <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
                     }

@@ -182,7 +182,7 @@
                     } else if (data == 3 || row.by_spv == 3 || row.by_asmng == 3 || row.by_mng == 3) {
                         status += `Rejected`
                     } else {
-                        `<p>--</p>`
+                        status += `<p>--</p>`
                     }
                     return status;
                 }
