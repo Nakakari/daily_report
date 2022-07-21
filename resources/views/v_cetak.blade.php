@@ -7,14 +7,14 @@
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
 
-                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                            <ol class="breadcrumb breadcrumb-links breadcrumb-info">
-                                <li class="breadcrumb-item"><a onclick="window.print()">Print
-                                        this page</a>
-                                </li>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4 ">
+                            {{-- <ol class="breadcrumb-links breadcrumb-info btn btn-sm btn-warning"> --}}
+                            <li class="btn btn-sm btn-warning btn-lg"><a onclick="window.print()">Print
+                                    this page</a>
+                            </li>
 
 
-                            </ol>
+                            {{-- </ol> --}}
                         </nav>
                     </div>
 
