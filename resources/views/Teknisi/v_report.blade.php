@@ -200,9 +200,8 @@
                         tampilan +=
                             `<a class="btn btn-sm btn-warning" href="{{ url('') }}/report/print/${row.id_report}" id="btnprn" target="_blank">Cetak</a>`
                     } else if (data == 1 || row.by_spv == 1 || row.by_asmng == 1 || row.by_mng == 1) {
-                        `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
-                                    
-                                    <button class="btn btn-sm btn-danger" onclick="hapus(${row.id_report})">Hapus</button>`
+                        tampilan +=
+                            `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>`
                     } else if (data == 2 || row.by_spv == 2 || row.by_asmng == 2 || row.by_mng == 2) {
                         tampilan +=
                             `<a class="btn btn-sm btn-info" href="/edit_report/${row.id_report}">Detail</a>
