@@ -52,8 +52,17 @@ class assSpvController extends Controller
             ->join('tbl_status', 'tbl_status.id_status', '=', 'tbl_report.id_status')
             ->join('users', 'users.id', '=', 'tbl_report.id_work_for')
             ->where('tbl_report.by_spv', 0)
+            ->orwhere('tbl_report.by_spv', 1)
+            ->orwhere('tbl_report.by_spv', 2)
+            ->orwhere('tbl_report.by_spv', 3)
             ->where('tbl_report.by_asmng', 0)
+            ->orwhere('tbl_report.by_asmng', 1)
+            ->orwhere('tbl_report.by_asmng', 2)
+            ->orwhere('tbl_report.by_asmng', 3)
             ->where('tbl_report.by_mng', 0)
+            ->orwhere('tbl_report.by_mng', 1)
+            ->orwhere('tbl_report.by_mng', 2)
+            ->orwhere('tbl_report.by_mng', 3)
             ->orderBy('id_report', "desc");
 
         $recordsFiltered = $data->get()->count(); //menghitung data yang sudah difilter

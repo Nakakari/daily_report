@@ -346,8 +346,8 @@
                             <button class="btn btn-sm btn-danger" onclick="toggleReject(${row.id_report})">Reject</button>`
                     } else if (data == 3) {
                         tampilan +=
-                            `<button class="btn btn-sm btn-success" onclick="toggleApprove('${row.id_report}')">Approve</button>
-                            <button class="btn btn-sm btn-warning" onclick="toggleRevision('${row.id_report}')">Revision</button>
+                            `<button class="btn btn-sm btn-success" onclick="toggleApprove('${row.id_report}')" disabled>Approve</button>
+                            <button class="btn btn-sm btn-warning" onclick="toggleRevision('${row.id_report}')" disabled>Revision</button>
                             <button class="btn btn-sm btn-danger" onclick="toggleReject(${row.id_report})" disabled>Reject</button>`
                     } else {
                         tampilan +=
