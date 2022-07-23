@@ -222,7 +222,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="form-control-label">Tanda Tangan</label>
+                                            <label class="form-control-label">New Tanda Tangan</label>
                                             <input type="file" id="input-postal-code" class="form-control mb-2"
                                                 placeholder="Postal code" name="ttd" value="{{ $report->ttd }}">
                                             {{-- <div class="col text-left">
