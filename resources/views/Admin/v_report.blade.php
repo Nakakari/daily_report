@@ -175,12 +175,34 @@
                     var status = ``;
                     if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 1) {
                         status += `<p>Approved Selesai</p>`
-                    } else if (data == 1 || row.by_spv == 1 || row.by_asmng == 1 || row.by_mng == 1) {
-                        status += `<p>Pending</p>`
-                    } else if (data == 2 || row.by_spv == 2 || row.by_asmng == 2 || row.by_mng == 2) {
-                        status += `<p>Revision</p>`
-                    } else if (data == 3 || row.by_spv == 3 || row.by_asmng == 3 || row.by_mng == 3) {
-                        status += `Rejected`
+                        // Semua setuju
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 3) {
+                        status += `Rejected by manager`
+                        // Semua setuju kecuali manager
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 3 && row.by_mng == 0) {
+                        status += `Rejected by Assistant Manager`
+                        // tidak disetujui asisten manager
+                    } else if (data == 1 && row.by_spv == 3 && row.by_asmng == 0 && row.by_mng == 0) {
+                        status += `Rejected by Supervisor`
+                        // Ditolak Supervisor
+                    } else if (data == 3 && row.by_spv == 0 && row.by_asmng == 0 && row.by_mng == 0) {
+                        status += `Rejected by Assistant Supervisor`
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1) {
+                        status += `<p>Pending Response for Manager</p>`
+                    } else if (data == 1 && row.by_spv == 1) {
+                        status += `<p>Pending Response for Assistant Manager</p>`
+                    } else if (data == 1) {
+                        status += `<p>Pending Response for Supervisor</p>`
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 2) {
+                        status += `Revision | Manager`
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 2) {
+                        status += `Revision | Assistant Manager`
+                    } else if (data == 1 && row.by_spv == 2) {
+                        status += `Revision | Supervisor`
+                    } else if (data == 2) {
+                        status += `Revision | Assistant Supervisor`
+                    } else if (data == 0) {
+                        status += `<p>--</p>`
                     } else {
                         status += `<p>--</p>`
                     }
