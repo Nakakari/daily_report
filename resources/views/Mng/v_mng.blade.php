@@ -395,7 +395,7 @@
                     method: 'POST',
                     data: {
                         id_report: id_report,
-                        by_mng: by_aspv_update,
+                        by_mng: by_mng_update,
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(res) {

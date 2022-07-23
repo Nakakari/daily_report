@@ -189,9 +189,9 @@
                         // Ditolak Supervisor
                     } else if (data == 3 && row.by_spv == 0 && row.by_asmng == 0 && row.by_mng == 0) {
                         status += `Rejected by Assistant Supervisor`
-                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1) {
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 0) {
                         status += `<p>Pending Response for Manager</p>`
-                    } else if (data == 1 && row.by_spv == 1) {
+                    } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 0 && row.by_mng == 0) {
                         status += `<p>Pending Response for Assistant Manager</p>`
                     } else if (data == 1 && row.by_spv == 1 && row.by_asmng == 1 && row.by_mng == 2) {
                         status += `Revision | Manager`
@@ -201,7 +201,7 @@
                         status += `Revision | Supervisor`
                     } else if (data == 2) {
                         status += `Revision | Assistant Supervisor`
-                    } else if (data == 1) {
+                    } else if (data == 1 && row.by_spv == 0 && row.by_asmng == 0 && row.by_mng == 0) {
                         status += `<p>Pending Response for Supervisor</p>`
                     } else if (data == 0) {
                         status += `<p>--</p>`
