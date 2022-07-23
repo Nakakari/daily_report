@@ -147,10 +147,10 @@ class reportController extends Controller
 
         if (request()->input("search.value")) {
             $data = $data->where(function ($query) {
-                $query->whereRaw('LOWER(users.name) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
-                    ->orWhereRaw('LOWER(users.username) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
-                    ->orWhereRaw('LOWER(users.username) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
-                    ->orWhereRaw('LOWER(tbl_peran.nama_peran) like ?', ['%' . strtolower(request()->input("search.value")) . '%']);
+                $query->whereRaw('LOWER(tbl_report.date) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
+                    ->orWhereRaw('LOWER(tbl_mesin.model_mesin) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
+                    ->orWhereRaw('LOWER(users.name) like ?', ['%' . strtolower(request()->input("search.value")) . '%'])
+                    ->orWhereRaw('LOWER(tbl_status.nama_status) like ?', ['%' . strtolower(request()->input("search.value")) . '%']);
             });
         }
 
